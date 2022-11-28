@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Yazi github
+          Learn React with Yazi
         </a>
       </header>
     </div>
