@@ -1,7 +1,25 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useEffect, useState } from "react";
+import { consultarHora } from "./api/Rule_prueba";
 
 function App() {
+  const [time, setTime] = useState("");
+
+  const getTime = async () => {
+    await consultarHora()
+      .then((respuesta) => {
+        setTime(respuesta);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  useEffect(() => {
+    getTime();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +33,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Yazi github
+          {time && <p>{time.time.toString()}</p>}
         </a>
       </header>
     </div>
